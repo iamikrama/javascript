@@ -1,0 +1,80 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+.calculator{
+    background-color: #2C2C2C;
+    padding: 40px;
+    max-width: 400px;
+    margin: 0 auto;
+    border: solid 1px #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    margin-top: 40px;
+}
+
+#result{
+    width: 100%;
+    padding: 10px;
+    font-size: 24px;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3) inset;
+    border-radius: 5px;
+}
+.buttons{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap:10px;
+    margin-top: 20px;
+}
+button{
+    padding: 10px;
+    font-size: 24px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;;
+
+}
+button:hover{
+    background-color: #ddd;
+    transform: scale(1.05); 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); 
+}
+button:active {
+    transform: scale(0.95); /* Slightly shrink on click */
+    background: linear-gradient(to bottom, #C70039, #900C3F); /* Darker gradient on click */
+}
+.clear{
+    background-color: #ff4136;
+    color: white;
+}
+.clear:hover{
+    background-color: #de372e;
+}
+.number, .decimal{
+    background-color: #fff;
+    color: #333;
+}
+.operator{
+    background-color: #FFA500; 
+    color: #FFFFFF;
+}
+.operator:hover {
+    background-color: #FF7F00; 
+}
+.equal {
+    background: linear-gradient(to bottom, #FF5733, #C70039); /* Gradient for the equal button */
+    color: white; /* Text color */
+    font-size: 20px; /* Slightly larger for emphasis */
+    font-weight: bold; /* Bold text */
+    border: none; /* No border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px; /* Comfortable padding */
+    width: 100%; /* Full width */
+    cursor: pointer; /* Pointer cursor for interactivity */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effects */
+    grid-row: span 2;
+}
+
