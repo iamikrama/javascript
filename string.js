@@ -20,7 +20,18 @@ let c = A.slice(6, 9);
 let d = A.slice(10);
 
 // Output the value of variable
-console.log(b);
-console.log(c);
-console.log(d);
-console.log(A.slice(2))
+// console.log(b);
+// console.log(c);
+// console.log(d);
+// console.log(A.slice(2))
+
+
+
+function getLength(str){
+    console.log("original string:", str);
+    console.log("length of string:", str.length);
+    
+    
+
+}
+getLength("Ikrama");

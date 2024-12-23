@@ -40,6 +40,27 @@ const tinderUser ={} // non singleton object
 tinderUser.Id = "123abc"
 tinderUser.name= "Mehvii"
 tinderUser.issLoggedIn= false
-console.log(tinderUser);
+// console.log(tinderUser);
+
+
+const user1= {
+        firstName: "ikrama",
+        age : 18,
+        City: "Delhi",
+    }
+//     console.log(user1["firstName"]); // bracket notation
+//     console.log(user1.age); // dot notation
+
+
+// console.log(Object.keys(user1)); // to get all the keys of object 
+// console.log(Object.values(user1)); // to get all the values of object.
+
+
+console.log(Object.entries(user1));
+
+
+
+    
+    
 
 

@@ -3,14 +3,14 @@
 // let color = "yellow";
 // if (color =="red") {
 //     console.log("you must stop");
-// } 
+// }
 // if (color=="green"){
 //     console.log("stop and slow down ur vehicles");
-    
+
 // }
 // if (color="yellow"){
 //     console.log("you can go now");
-    
+
 // }
 
 ////////////++++++++ check age for voting
@@ -18,22 +18,20 @@
 // let age= 19;
 // if (age>=18){
 //     console.log("a person can vote");
-    
+
 // } else{
 //     console.log("a person cant vote");
 // }
-
 
 /////+++++++ odd or even no
 
 // let number = 8;
 // if (number % 2=== 0){
 //     console.log(`the number ${number} is even`);
-    
+
 // }else{
 //     console.log(`the number ${number} is odd`);
 // }
-
 
 ////+++++++ comparison of two numbers
 
@@ -41,10 +39,10 @@
 // num2= 3
 // if (num1===num2){
 //     console.log(`${num1} and ${num2} both are equal`);
-    
+
 // }else if (num1>num2){
 //     console.log(`${num1} is greater than ${num2}`);
-    
+
 // } else {(num1<num2)
 //     console.log(`${num1} is smaller than ${num2}`);
 // }
@@ -54,10 +52,10 @@
 // let number = 55;
 // if (number % 5 === 0 ){
 //     console.log(`${number} is divisible by 5`);
-    
+
 // } else {
 //     console.log(`${number} is not  divisible by `)
-    
+
 // }
 
 // let char = 'E';
@@ -68,7 +66,6 @@
 // } else {
 //     console.log("Not a letter");
 // }
-
 
 // let player1 = "rock";
 // let player2 = "paper";
@@ -84,7 +81,6 @@
 // } else {
 //     console.log("Player 2 wins!");
 // }
-
 
 // import { createInterface } from 'readline';
 
@@ -122,10 +118,10 @@
 // }
 // if (guess== favMovie){
 //     console.log("you guess right");
-    
+
 // }else {
 //     console.log("you quit");
-    
+
 // }
 
 // let heroes = [
@@ -136,21 +132,20 @@
 //     console.log(i, heroes[i], heroes[i].length);
 //     for (let j=0; j<heroes[i].length; j++){
 //         console.log(`j=${j}, ${heroes[i][j]}`);
-        
-//     }
-    
-// }
 
+//     }
+
+// }
 
 // let fruits= ["mango", "apple", "orange", "guava"]
 // for( fruit of fruits){
 //     console.log(fruit);
-    
+
 // }
 
 // for (char of "ikrama"){
 //     console.log(char);
-    
+
 // }
 
 // let todo =[];
@@ -163,3 +158,51 @@
 
 //     if (req== "list")
 // }
+
+// let prom = new Promise((resolve, reject) => {
+//   let a = Math.random();
+//   if (a > 0.5) {
+//     reject("no the no is not supported");
+//   } else {
+//     setTimeout(() => {
+//       console.log("im done");
+//       resolve("Mehvii");
+//     }, 2000);
+//   }
+// });
+// prom.then((a) => {
+// //   console.log(a)
+// }).catch((abc)=>{
+//     // console.log(abc);
+    
+// })
+
+// console.log('promise questions');
+// const myPromise= new Promise((resolve, reject)=>{
+//     setTimeout(()=>{
+//         resolve("Hello world")
+
+//     }, 2000)
+// });
+// myPromise.then((result)=>{
+//     console.log(result);
+    
+// })
+
+const myNewPromise = new Promise((resolve, reject)=>{
+    const sucess = Math.random()>0.5;
+    if (sucess){
+        resolve("yayyyyy")
+    }else{
+        reject("nayyyy")
+    }
+
+})
+myNewPromise
+    .then((result)=>{
+    console.log(result);  
+    })
+    .catch((err)=>{
+        console.log(err);
+        
+    });

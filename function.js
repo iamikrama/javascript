@@ -13,7 +13,23 @@ const user={
         password: "mehvii123"
 }
 function handleObject(anyObject){
-    console.log(`username is ${anyObject.username} and password is ${anyObject.password}`);
+    // console.log(`username is ${anyObject.username} and password is ${anyObject.password}`);
 
 }
-handleObject(user)
+handleObject(user);
+
+///////////
+
+function calculateArithmetic(a, b, type){
+    if (type == "sum"){
+        return a+b;
+    } if ( type = "minus"){
+        return a-b;
+    }
+
+}
+const value = calculateArithmetic(2,1, "minus");
+console.log(value);
+
+
+
