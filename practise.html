@@ -1,17 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>practise</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <!-- <link href="style.css" rel="stylesheet" type="text/css" /> -->
 </head>
-<body>
-    <h3> Generate a random color</h3>
-    <br>
-    <button>Generate color</button>
-    <br>
-    <div>This is your new color</div>
-    <script src="practise.js"></script>
+
+<body> <!-- Correctly moved the <body> tag -->
+  <div class="parent">
+    <div class="day">Monday </div>
+    <div class="day">Tuesday </div>
+    <div class="day">Wednesday </div>
+    <div class="day">Thursday </div>
+    <div class="day">Friday</div>
+    <div class="day">Saturday </div>
+  </div>
+
+  <ul class="language">
+    <li>Javascript</li>
+    
+  </ul>
+  <script>
+
+
+function addLang(langName){
+   const li=  document.createElement('li')
+   li.innerHTML= `${langName}`
+   document.querySelector('.language').appendChild(li)
+
+}
+
+addLang("Python")
+addLang("Ruby")
+
+function addOptiLang(langName){
+    const li = document.createElement('li');
+    li.appendChild(document.createTextNode(langName))
+    document.querySelector('.language').appendChild(li)
+
+}
+addOptiLang("swift")
+
+
+// Edit in dom
+const secondLang= document.querySelector('li:nth-child(2)')
+const newLi= document.createElement('li')
+newLi.appendChild(document.createTextNode("Moji"))  // this is optimised way
+// newLi.textContent= "Jubii"   //can also be used this.
+secondLang.replaceWith(newLi)
+
+
+// remove
+
+const lastLang = document.querySelector("li:last-child")
+lastLang.remove()
+
+    const parent = document.querySelector('.parent');
+    // console.log(parent);             
+    // console.log(parent.children);   
+    // console.log(parent.children[1].innerHTML);
+     
+
+    // for (let i = 0; i < parent.children.length; i++) {
+    //     console.log(parent.children[i].innerHTML)
+        
+    // }
+
+    parent.children[1].style.color= 'orange'
+
+    // console.log(parent.firstElementChild);
+    // console.log(parent.lastElementChild);
+
+    const div = document.createElement('div')
+
+
+    const heading = document.createElement('h1')
+
+
+    heading.className= "heading"
+    heading.id= 'h_id'
+    const headText= document.createTextNode("main heading")
+    heading.appendChild(headText)
+    document.body.appendChild(heading)
+    
+    
+    div.className= 'main'
+    div.id= 'myId'
+    div.setAttribute('title', "generated div")
+    div.style.backgroundColor= 'green';
+    div.style.padding = '12px'
+    // console.log(heading);
+    // div.innerText= "Sunday" 
+    const addText= document.createTextNode("Sunday")
+    div.appendChild(addText)
+    document.body.appendChild(div)
+
+
+    
+
+  </script>
 </body>
+
 </html>
