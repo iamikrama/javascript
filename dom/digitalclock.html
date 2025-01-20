@@ -1,37 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dom manipulation</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Manipulation</title>
     <style>
-        .h1{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        #clock{
-            height: 30px;
-            width: 100px;
-            border: 1px solid black;
-            border-radius: 5px;
-            text-align: center;
-            padding: 10px 2px 2px 2px;
-            color: black;
-            background-color: yellow;
-        }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 2rem;
+        color: #333;
+      }
+
+      #clock {
+        height: 50px;
+        width: 250px;
+        border: 2px solid black;
+        border-radius: 10px;
+        text-align: center;
+        line-height: 50px;
+        color: black;
+        background-color: rgb(232, 191, 25);
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-top: 20px;
+      }
     </style>
-</head>
-<body class="body">
-    <h1>Digital Clockk</h1>
-    <div id="clock">box</div>
+  </head>
+  <body>
+    <h1>Digital Clock</h1>
+    <div id="clock">Loading...</div>
     <script>
-       const clock= document.querySelector('#clock');
-    //    console.log(date);
-       setInterval(function(){
-        let date = new Date();
-        clock.innerHTML= date.toLocaleTimeString();
-       }, 1000);
+      const clock = document.querySelector("#clock");
+      setInterval(function () {
+        const date = new Date();
+        // let hours = date.getHours();
+        // let minutes = date.getMinutes();
+        // let seconds = date.getSeconds();
+
+        // const ampm = hours >= 12 ? "PM" : "AM";
+        // hours = hours % 12 || 12; // Convert to 12-hour format (0 becomes 12)
+
+        // // Add leading zeros to minutes and seconds if needed
+        // minutes = minutes < 10 ? "0" + minutes : minutes;
+        // seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        // const time = `${hours}:${minutes}:${seconds} ${ampm}`;
+        // // console.log(time);
+        
+
+        clock.innerHTML = date.toLocaleTimeString("en-US", { hour12: true })
+      }, 1000);
     </script>
-</body>
+  </body>
 </html>

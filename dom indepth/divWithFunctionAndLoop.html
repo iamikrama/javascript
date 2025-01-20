@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Divs with Loop</title>
+</head>
+<body style="background-color: #212121; color: white;">
+    <script>
+        // Function to create divs
+        function createDivs() {
+            // Loop 5 times to create 5 divs
+            for (let i = 1; i <= 5; i++) {
+                // Create a new div element
+                const newDiv = document.createElement('div');
+                
+                // Set a class or id if needed
+                newDiv.className = "dynamic-div";
+                
+                // Set some text content for each div
+                newDiv.textContent = `This is div number ${i}`;
+                
+                // Optionally style the div
+                newDiv.style.backgroundColor = "#333";
+                newDiv.style.margin = "10px";
+                newDiv.style.padding = "20px";
+                newDiv.style.borderRadius = "5px";
+                
+                // Append the new div to the body
+                document.body.appendChild(newDiv);
+            }
+        }
+
+        // Call the function to create 5 divs
+        createDivs();
+    </script>
+</body>
+</html>

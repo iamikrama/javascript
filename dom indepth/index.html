@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | Ikrama Akhtar</title>
+</head>
+<body style="background-color: #212121; color:white ;">
+    <div class="parent">
+        <div class="days">Monday</div>
+        <div class="days">Tuesday</div>
+        <div class="days">Wednesday</div>
+        <div class="days">Thursday</div>
+    </div>
+<script>  
+const parent = document.querySelector('.parent')
+// console.log(parent);
+// console.log(parent.children);
+// console.log(parent.children[0]);
+// console.log(parent.children[2].innerHTML); // to get children of element 3
+
+// for (let i= 0; i<parent.children.length; i++){
+//     console.log(parent.children[i].innerHTML);
+    
+// }
+parent.children[2].style.color= "orange"
+
+
+// console.log(parent.firstElementChild);
+// console.log(parent.firstElementChild.innerHTML);
+// console.log(parent.lastElementChild.innerHTML);
+
+
+const dayOne = document.querySelector('.days')
+// console.log(dayOne);
+// console.log(dayOne.parentElement);
+// console.log(dayOne.parentNode);
+// console.log(parent.childNodes);
+
+const div = document.createElement('div')
+// console.log(div);
+
+/* SETTING ATTRIBUTES by element */
+
+div.className = "main"
+div.id = Math.round(Math.random()*20 +1)
+// console.log(div);
+
+/* SETTING ATTRIBUTES by setAttribute() */
+
+// div.setAttribute("class", "my-class")
+// div.setAttribute("id", "my-Id")
+// div.setAttribute("title", "my-title")
+// console.log(div);
+
+/* SETTING MULTIPLE ATTRIBUTES by Object.entries()  */
+
+// let attributes ={
+//     class: "myclass",
+//     id: "myid",
+//     title: "mytitle"
+// }
+// for (let [key, value] of Object.entries(attributes)) {
+//   div.setAttribute(key, value);
+// }
+
+// console.log(div);
+
+
+/* ADDING TEXT */
+
+const addText = document.createTextNode("Trying to be the best developer in the market")
+div.appendChild(addText)
+document.body.appendChild(div)
+// console.log(div);
+
+/* INSERTING DIV BEFORE target element */
+
+parent.insertAdjacentElement("beforeBegin", div);
+
+/* INSERTING DIV AFTER target element */
+parent.insertAdjacentElement("afterEnd", div);
+</script>
+</body>
+</html>

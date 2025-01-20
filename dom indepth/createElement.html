@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating DOM Elements</title>
+</head>
+<body style="background-color: #212121; color: white;">
+</body>
+<script>
+    // Create the main div
+    const div = document.createElement('div');
+    div.setAttribute("class", "myclass");
+    div.setAttribute("id", "myid");
+
+    // Create text, heading, and paragraph
+    const addText = document.createTextNode("This is my div");
+    const heading = document.createElement('h4');
+    heading.textContent = "This is my heading";
+    const para = document.createElement('p');
+    para.textContent = "The third and the last layer is retina connected to the brain";
+
+    // Append the text, heading, and paragraph to the div
+    div.append(addText, heading, para);
+    document.body.appendChild(div);
+
+    // Create a new div to insert After the existing div
+
+    const afterDiv = document.createElement('div');
+    afterDiv.textContent = "This div is after the existing div";
+    afterDiv.style.color = "yellow"; // Optional styling for better visibility
+    
+    // creating div inside after existing div
+    const insideAfterDiv = document.createElement('div')
+    insideAfterDiv.textContent= "im inside after existing div"
+    afterDiv.appendChild(insideAfterDiv)
+    document.body.appendChild(afterDiv)
+    
+    // Create a new div to insert before the existing div
+    const beforeDiv = document.createElement('div');
+    beforeDiv.textContent = "This div is before the existing div";
+    beforeDiv.style.color = "yellow"; // Optional styling for better visibility
+
+    // Insert the new div before the existing div
+
+    div.insertAdjacentElement("beforeBegin", beforeDiv)
+    div.insertAdjacentElement("afterEnd", afterDiv)
+    
+    
+    console.log(div);
+    console.log(beforeDiv);
+    console.log(afterDiv);
+    
+</script>
+</html>

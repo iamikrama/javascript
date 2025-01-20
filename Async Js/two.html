@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asynchronous Javascript</title>
+  </head>
+  <body>
+    <h1 id="heading">HEADING OF THIS PAGE</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    const heading = document.querySelector("#heading");
+    const start = document.querySelector("#start");
+    const stop = document.querySelector("#stop");
+    let intervalId = null;
+    start.addEventListener("click", function () {
+        console.log('start clicked');
+        
+      if (intervalId === null) {
+        intervalId = setInterval(() => {
+          const div = document.createElement("div");
+          div.setAttribute('id', "myId")
+          div.textContent = "Hello i just entered";
+          heading.insertAdjacentElement("afterend", div);
+        }, 2000);
+      }
+    });
+
+    stop.addEventListener('click', function(){
+        console.log('stop clicked');
+        
+        if (intervalId !== null){
+            clearInterval(intervalId)
+            intervalId = null;
+            const divRemove = document.querySelectorAll('#myId')
+            divRemove.forEach((div) => div.remove());
+            
+        }
+    })
+  </script>
+</html>
