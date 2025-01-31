@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript Learning Journey</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600&display=swap");
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(120deg, #0a192f, #112240);
+        min-height: 100vh;
+        padding: 2rem;
+        color: #64ffda;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .heading {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #64ffda;
+        text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+      }
+
+      .nav-btn {
+        background: rgba(100, 255, 218, 0.1);
+        border: 1px solid #64ffda;
+        color: #64ffda;
+        padding: 0.75rem 1.5rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: "JetBrains Mono", monospace;
+        transition: all 0.3s ease;
+      }
+
+      .nav-btn:hover {
+        background: rgba(100, 255, 218, 0.2);
+        transform: translateY(-2px);
+      }
+
+      .topic-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .topic-card {
+        background: rgba(17, 34, 64, 0.8);
+        border: 1px solid #233554;
+        padding: 1.5rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .topic-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        border-color: #64ffda;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(10, 25, 47, 0.9);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .modal-content {
+        background: #112240;
+        padding: 2rem;
+        border-radius: 8px;
+        max-width: 600px;
+        width: 90%;
+        position: relative;
+        border: 1px solid #233554;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 1.5rem;
+        color: #64ffda;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0.5rem;
+      }
+
+      .code-block {
+        background: #1b2d4d;
+        padding: 1rem;
+        border-radius: 4px;
+        margin: 1rem 0;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.9rem;
+        white-space: pre;
+      }
+
+      .modal h2 {
+        color: #64ffda;
+        margin-bottom: 1rem;
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      .modal p {
+        color: #a8b2d1;
+        margin-bottom: 1rem;
+      }
+
+      .animated-text {
+        text-align: center;
+        font-size: 1.2rem;
+        margin: 2rem 0;
+        min-height: 2em;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 16rem;
+        padding: 2rem;
+        border-top: 1px solid #233554;
+        font-family: "JetBrains Mono", monospace;
+        color: #a8b2d1;
+      }
+
+      .footer p {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+      }
+
+      .footer p:hover {
+        opacity: 1;
+        color: #64ffda;
+      }
+
+      @media (max-width: 768px) {
+        .navbar {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .nav-btn {
+          width: 100%;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="heading">JavaScript Learning Journey</h1>
+
+      <nav class="navbar">
+        <button class="nav-btn" id="callstack-btn">Call Stack</button>
+        <button class="nav-btn" id="async-btn">Async JavaScript</button>
+        <button class="nav-btn" id="promises-btn">Promises</button>
+        <button class="nav-btn" id="dom-btn">DOM</button>
+      </nav>
+
+      <div class="topic-grid">
+        <div class="topic-card" id="favorite-card">
+          <h3>Favorite Topic</h3>
+          <p>Click to discover my favorite JavaScript topic!</p>
+        </div>
+        <div class="topic-card" id="learning-card">
+          <h3>Learning Path</h3>
+          <p>Find out where my JavaScript journey began.</p>
+        </div>
+        <div class="topic-card" id="experience-card">
+          <h3>Experience</h3>
+          <p>Explore my JavaScript experience timeline.</p>
+        </div>
+        <div class="topic-card" id="framework-card">
+          <h3>Framework Choice</h3>
+          <p>Learn about my preferred JavaScript framework.</p>
+        </div>
+      </div>
+      <footer class="footer">
+        <p>Made for learning purpose only by Ikrama Akhtar</p>
+    </footer>
+    </div>
+
+    <!-- Modals -->
+    <div id="callstack-modal" class="modal">
+      <div class="modal-content">
+        <button class="close-modal">&times;</button>
+        <h2>JavaScript Call Stack</h2>
+        <div class="animated-text"></div>
+        <div class="content hidden">
+          <div class="code-block">
+            function first() { console.log('Running first'); second(); }
+            function second() { console.log('Running second'); third(); }
+            function third() { console.log('Running third'); } first(); // Call
+            stack: first → second → third
+          </div>
+          <p>The call stack follows Last-In-First-Out (LIFO) principle:</p>
+          <ul>
+            <li>Functions are added to the stack in order of execution</li>
+            <li>Each function call creates a new frame</li>
+            <li>When a function completes, it's removed from the stack</li>
+            <li>
+              The stack has a maximum size (causing "stack overflow" if
+              exceeded)
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="learning-modal" class="modal">
+      <div class="modal-content">
+        <button class="close-modal">&times;</button>
+        <h2>My Learning Path</h2>
+        <div class="animated-text"></div>
+        <div class="content hidden">
+          <p>My JavaScript learning journey began with:</p>
+          <div class="code-block">
+            // Learning Source: Chai aur Code Series 
+            // Instructor: Hitesh Choudhary 
+            // Platform: YouTube 
+            /* What I learned: * - JavaScript fundamentals * 
+            - Modern ES6+ features * - Real-world applications *
+            - Best practices */
+          </div>
+          <p>
+            This comprehensive series helped me build a strong foundation in
+            JavaScript!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="experience-modal" class="modal">
+      <div class="modal-content">
+        <button class="close-modal">&times;</button>
+        <h2>My JavaScript Experience</h2>
+        <div class="animated-text"></div>
+        <div class="content hidden">
+          <p>Check out my JavaScript projects and learning progress:</p>
+          <div class="code-block">
+            // GitHub Repository const githubRepo = { url: https://github.com/iamikrama",
+            projects: [ "JavaScript Fundamentals", "DOM Manipulation", "Async
+            Programming" ] };
+          </div>
+          <p>Feel free to explore my repositories and see my coding journey!</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="framework-modal" class="modal">
+      <div class="modal-content">
+        <button class="close-modal">&times;</button>
+        <h2>Framework Choice</h2>
+        <div class="animated-text"></div>
+        <div class="content hidden">
+          <p>My preferred framework is React.js!</p>
+          <div class="code-block">
+            // Why React.js? const reactBenefits = { componentBased: true,
+            virtualDOM: "Efficient updates", ecosystem: "Rich and mature",
+            community: "Large and active", jobMarket: "High demand" };
+          </div>
+          <p>
+            React's component-based architecture and rich ecosystem make it an
+            excellent choice for modern web development.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="async-modal" class="modal">
+      <div class="modal-content">
+        <button class="close-modal">&times;</button>
+        <h2>Asynchronous JavaScript</h2>
+        <div class="animated-text"></div>
+        <div class="content hidden">
+          <p>Asynchronous JavaScript allows non-blocking execution of code:</p>
+          <div class="code-block">
+            // Example of async operations console.log('Start'); setTimeout(()
+            => { console.log('Timer complete'); }, 2000); fetch('api/data')
+            .then(response => response.json()) .then(data => console.log(data));
+            console.log('End');
+          </div>
+          <p>Key concepts:</p>
+          <ul>
+            <li>Event Loop</li>
+            <li>Callbacks</li>
+            <li>Promises</li>
+            <li>Async/Await</li>
+            <li>Non-blocking I/O</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="promises-modal" class="modal">
+      <div class="modal-content">
+        <button class="close-modal">&times;</button>
+        <h2>JavaScript Promises</h2>
+        <div class="animated-text"></div>
+        <div class="content hidden">
+          <p>Promises handle asynchronous operations elegantly:</p>
+          <div class="code-block">
+            // Creating and using promises const myPromise = new
+            Promise((resolve, reject) => { // Async operation if (success) {
+            resolve('Operation successful'); } else { reject('Operation
+            failed'); } }); myPromise .then(result => console.log(result))
+            .catch(error => console.error(error));
+          </div>
+          <p>Promise states:</p>
+          <ul>
+            <li>Pending: Initial state</li>
+            <li>Fulfilled: Operation completed successfully</li>
+            <li>Rejected: Operation failed</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="dom-modal" class="modal">
+      <div class="modal-content">
+        <button class="close-modal">&times;</button>
+        <h2>Document Object Model (DOM)</h2>
+        <div class="animated-text"></div>
+        <div class="content hidden">
+          <p>The DOM represents the webpage as a tree structure:</p>
+          <div class="code-block">
+            // DOM Manipulation examples const element =
+            document.getElementById('myId'); const elements =
+            document.querySelectorAll('.myClass'); // Event handling
+            element.addEventListener('click', () => {
+            element.classList.toggle('active'); }); // Creating elements const
+            newDiv = document.createElement('div'); newDiv.textContent = 'Hello
+            World'; document.body.appendChild(newDiv);
+          </div>
+          <p>Common DOM operations:</p>
+          <ul>
+            <li>Element selection</li>
+            <li>Event handling</li>
+            <li>Content manipulation</li>
+            <li>Style modification</li>
+            <li>Element creation/deletion</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Similar modals for other topics -->
+    <div id="favorite-modal" class="modal">
+      <div class="modal-content">
+        <button class="close-modal">&times;</button>
+        <h2>My Favorite JavaScript Topic</h2>
+        <div class="animated-text"></div>
+        <div class="content hidden">
+          <p>
+            Async/Await is my favorite because it makes asynchronous code
+            beautiful!
+          </p>
+          <div class="code-block">
+            async function fetchUserData() { try { const response = await
+            fetch('/api/user'); const data = await response.json(); return data;
+            } catch (error) { console.error('Error:', error); } }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function createAnimation(modalId, messages, finalContent = true) {
+        const modal = document.getElementById(modalId);
+        const textElement = modal.querySelector(".animated-text");
+        const content = modal.querySelector(".content");
+
+        modal.style.display = "flex";
+        content.classList.add("hidden");
+
+        let currentIndex = 0;
+        const interval = setInterval(() => {
+          textElement.textContent = messages[currentIndex];
+          currentIndex++;
+
+          if (currentIndex >= messages.length) {
+            clearInterval(interval);
+            if (finalContent) {
+              setTimeout(() => {
+                textElement.style.display = "none";
+                content.classList.remove("hidden");
+              }, 1000);
+            }
+          }
+        }, 1000);
+
+        return interval;
+      }
+
+      // Setup modals
+      const modalSetups = {
+        "favorite-card": {
+          modalId: "favorite-modal",
+          messages: [
+            "Thinking about all the JavaScript topics...",
+            "So many amazing features to choose from...",
+            "But one stands out above the rest...",
+            "My favorite topic is Async/Await! 🚀",
+          ],
+        },
+        "learning-card": {
+          modalId: "learning-modal",
+          messages: [
+            "Reviewing my learning journey...",
+            "Remembering where it all began...",
+            "Ah yes, it was Chai aur Code! ☕",
+          ],
+        },
+        "experience-card": {
+          modalId: "experience-modal",
+          messages: [
+            "Loading my JavaScript journey...",
+            "Checking my GitHub repositories...",
+            "Here's my coding adventure! 💻",
+          ],
+        },
+        "framework-card": {
+          modalId: "framework-modal",
+          messages: [
+            "Evaluating JavaScript frameworks...",
+            "Looking at the options...",
+            "React.js is the winner! ⚛️",
+          ],
+        },
+        "async-btn": {
+          modalId: "async-modal",
+          messages: [
+            "Loading async concepts...",
+            "Preparing examples...",
+            "Let's explore asynchronous JavaScript! 🔄",
+          ],
+        },
+        "promises-btn": {
+          modalId: "promises-modal",
+          messages: [
+            "Understanding Promises...",
+            "Getting ready for some examples...",
+            "Time to learn about Promises! 🤝",
+          ],
+        },
+        "dom-btn": {
+          modalId: "dom-modal",
+          messages: [
+            "Loading DOM concepts...",
+            "Preparing DOM examples...",
+            "Let's explore the DOM! 🌳",
+          ],
+        },
+        "callstack-btn": {
+          modalId: "callstack-modal",
+          messages: [
+            "Loading call stack explanation...",
+            "Preparing code examples...",
+            "Ready to explore the call stack! 📚",
+          ],
+        },
+      };
+
+      // Setup click handlers
+      Object.entries(modalSetups).forEach(([triggerId, setup]) => {
+        document.getElementById(triggerId).addEventListener("click", () => {
+          createAnimation(setup.modalId, setup.messages);
+        });
+      });
+
+      // Close modal handlers
+      document.querySelectorAll(".modal").forEach((modal) => {
+        modal.querySelector(".close-modal").addEventListener("click", () => {
+          modal.style.display = "none";
+        });
+
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) {
+            modal.style.display = "none";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
